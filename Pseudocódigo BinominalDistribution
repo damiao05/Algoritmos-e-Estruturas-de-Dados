@@ -1,0 +1,55 @@
+Constantes:
+    COIN_TOSSES = 100
+    LINES_IN_DIAGRAM = 30
+
+Classe Coin:
+    Atributo:
+        head: booleano
+
+    Método toss():
+        Gera um número aleatório entre 0 e 1
+        Se probabilidade >= número aleatório:
+            head = verdadeiro
+        Retorna head
+
+Classe BinomialDistribution:
+    Atributos:
+        num: número de lançamentos
+        prob: probabilidade de cara
+        result: contador de resultados com cara
+
+    Construtor(n, p):
+        Define num = n
+        Define prob = p
+        Define result = 0
+
+    Método experiment():
+        Cria nova moeda
+        Zera resultado
+        Para i de 0 até num - 1:
+            Define moeda.head = falso
+            Chama moeda.toss()
+            Se moeda.head for verdadeiro:
+                Incrementa resultado
+        Retorna resultado
+
+Programa principal:
+    Se número de argumentos < 3:
+        Encerra o programa
+
+    Lê argumentos p, p2 e m (probabilidades e número de experimentos)
+
+    Cria objeto dist com Bin(COIN_TOSSES, p)
+    Cria lista data
+    Para i de 0 até m - 1:
+        Executa dist.experiment() e insere resultado em data
+
+    Cria objeto dist2 com Bin(COIN_TOSSES, p2)
+    Cria lista data2
+    Para i de 0 até m - 1:
+        Executa dist2.experiment() e insere resultado em data2
+
+    Soma as duas listas de dados (data = data + data2)
+
+    Imprime a lista de dados
+    Imprime o diagrama com LINES_IN_DIAGRAM linhas e até COIN_TOSSES no eixo X
